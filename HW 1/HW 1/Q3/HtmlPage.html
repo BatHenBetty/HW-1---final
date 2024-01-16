@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Clock.js"></script>
+</head>
+<body>
+
+    <script>
+        const clockList = [];
+
+        function addClock() {
+            const country = document.getElementById('country').value;
+            const hours = parseInt(document.getElementById('hours').value, 10);
+            const minutes = parseInt(document.getElementById('minutes').value, 10);
+            const seconds = parseInt(document.getElementById('seconds').value, 10);
+
+            const newClock = new Clock(country, hours, minutes, seconds);
+            clockList.push(newClock);
+
+            // הצגה לאחר קבלת 5 רשומות
+            if (clockList.length === 5) {
+                displayClocks();
+            }
+
+            //על מנל לנקות את השדות לאחר לחיצה על הכפתור
+            document.getElementById('country').value = '';
+            document.getElementById('hours').value = '';
+            document.getElementById('minutes').value = '';
+            document.getElementById('seconds').value = '';
+        }
+
+        function displayClocks() {
+            const clockListContainer = document.getElementById('clockList');
+            clockListContainer.innerHTML = '';
+
+            clockList.forEach(clock => {
+                const listItem = document.createElement('li');
+                listItem.textContent = `${clock.country} - ${clock.show()} - ${clock.convertToSeconds()} seconds`;
+                clockListContainer.appendChild(listItem);
+            });
+        }
+    </script>
+    <h2>Clock Form</h2>
+
+    <form id="clockForm">
+        <label for="country">Country:</label>
+        <input type="text" id="country" required>
+
+        <label for="hours">Hours:</label>
+        <input type="number" id="hours" required>
+
+        <label for="minutes">Minutes:</label>
+        <input type="number" id="minutes" required>
+
+        <label for="seconds">Seconds:</label>
+        <input type="number" id="seconds" required>
+
+        <button type="button" onclick="addClock()">Add Clock</button>
+    </form>
+
+    <h2>Clocks</h2>
+    <ul id="clockList"></ul>
+</body>
+</html>

@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Point.js"></script>
+
+</head>
+<body>
+
+    <p id="ph">
+
+    </p>
+    <script>
+
+            const pointObj = new Point();
+
+            const arr1 = [new Point(2, 4), new Point(4, 6), new Point(6, 8), new Point(8, 10)];
+
+            //Example for Q2:
+            console.log("CheckPoints1:", arr1, pointObj.CheckPoints1(arr1, 6, 8)); // Should return true
+            console.log("CheckPoints1:", arr1, pointObj.CheckPoints1(arr1, 10, 8)); // Should return false
+
+            //Example for Q3:
+            console.log("CheckPoints2:", arr1, pointObj.CheckPoints2(arr1, new Point(4, 6))); // Should return true
+            console.log("CheckPoints2:", arr1, pointObj.CheckPoints2(arr1, new Point(4, 7))); // Should return false
+
+
+            //Example for Q4:
+            console.log("Total Distance:", arr1, pointObj.Calc(arr1)); // Output the total distance
+            const totalDistance = pointObj.Calc(arr1);
+
+
+            const pointsList = arr1.map(point => `(${point.x}, ${point.y})`).join(", ");
+            document.getElementById("ph").innerText = `The points are: ${pointsList}
+                                                       Total Distance: ${totalDistance}`;
+
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="Counter.js"></script>
+
+</head>
+<body>
+    <input type="text" id="counterInput" />
+    <br />
+    <br />
+    <button onclick="Start()">Start</button>
+    <button onclick="Inc()">+</button>
+    <button onclick="Show()">Go</button>
+   
+    <script>
+        let counter;
+        function Start() {
+            inputVal = parseInt(document.getElementById("counterInput").value);           
+            console.log(inputVal);
+            counter = new Counter(inputVal);
+            console.log(counter);
+        }
+
+        function Inc() {
+            
+            counter.Increment();
+            document.getElementById('counterInput').value = counter.num;
+            
+        }
+
+       
+        function Show() {
+            res = document.getElementById("piska");
+            counter.Go(res);
+            
+           
+        }
+        
+
+    </script>
+    <p id="piska">
+
+    </p>
+    
+</body>
+</html>
